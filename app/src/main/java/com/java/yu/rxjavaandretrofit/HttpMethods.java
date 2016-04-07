@@ -20,7 +20,7 @@ public class HttpMethods {
 
     private Retrofit retrofit;
     private MovieService movieService;
-
+//amdroid
     //构造方法私有
     private HttpMethods() {
         //手动创建一个OkHttpClient并设置超时时间

@@ -243,15 +243,13 @@ public class TestActvity extends Activity{
             }
         });
 
-        //concatMap操作符的运行结果
+        //concatMap操作符的运行结果10的延迟执行时间为200毫秒、20和30的延迟执行时间为180毫秒
         Observable.just(10, 20, 30).concatMap(new Func1<Integer, Observable<Integer>>() {
             @Override
             public Observable<Integer> call(Integer integer) {
-                //10的延迟执行时间为200毫秒、20和30的延迟执行时间为180毫秒
                 int delay = 200;
                 if (integer > 10)
                     delay = 180;
-
                 return Observable.from(new Integer[]{integer, integer / 2}).delay(delay, TimeUnit.MILLISECONDS);
             }
         }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<Integer>() {
